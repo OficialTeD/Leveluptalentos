@@ -1,0 +1,12 @@
+LEVELUP - KIT DO SITE ATUALIZADO
+
+Arquivos principais:
+- index.html
+- style.css
+- script.js
+- assets/capa.png
+- assets/logo-levelup.png
+- assets/carolina.jpg
+
+Para visualizar, abra o arquivo index.html no navegador.
+Para publicar, envie todos os arquivos e a pasta assets mantendo a mesma estrutura.

@@ -1,0 +1,11 @@
+const menu=document.getElementById('menu');
+const toggle=document.getElementById('toggle');
+const mobile=()=>window.matchMedia('(max-width:760px)').matches;
+const setState=(closed)=>{if(mobile()){menu.classList.toggle('open',!closed)}else{menu.classList.toggle('collapsed',closed)}toggle.setAttribute('aria-expanded',String(!closed));toggle.setAttribute('aria-label',closed?'Expandir menu':'Recolher menu');};
+toggle.addEventListener('click',()=>setState(mobile()?menu.classList.contains('open'):!menu.classList.contains('collapsed')));
+menu.querySelectorAll('nav a,.proposal').forEach(a=>a.addEventListener('click',()=>{if(mobile())setState(true)}));
+const links=[...menu.querySelectorAll('nav a')];
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-30% 0px -60%'});
+document.querySelectorAll('main section[id]').forEach(s=>observer.observe(s));
+document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('resize',()=>{menu.classList.remove('open');if(mobile())menu.classList.remove('collapsed')});
